@@ -33,7 +33,7 @@ h2 {margin: 20px 0;}
   };
   
   var hot = new Handsontable(container, {
-    data: [],
+    data: ["A1", "B1"],
     dataSchema: {id: null, name: {first: null, last: null}, address: null},
     height: 496,
     colHeaders: true,
@@ -79,6 +79,12 @@ h2 {margin: 20px 0;}
     for (var i = 0; i < rawData.length; i++) {
       if (i%2==0) {
         finalData.push(rawData[i+6-5]);
+        if((i == rawData.length - 1) && (rawData.length % 6 != 0))
+        {
+          for (var j = 0; j < (rawData.length % 6); j++) {
+            rawData.push(["", ""]);
+          };
+        }
       }
       else{
         finalData.push(rawData[i+6-7]);
@@ -92,6 +98,12 @@ h2 {margin: 20px 0;}
         {
           finalData.push(["",""]);
           finalData.push(rawData[i]);
+          if(rawData.length % 6 != 0)
+          {
+            for (var j = 0; j < (rawData.length % 6); j++) {
+              rawData.push(["", ""]);
+            };
+          }
         }
         else {
           finalData.push(rawData[i+6-5]);
